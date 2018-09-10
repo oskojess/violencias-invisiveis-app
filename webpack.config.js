@@ -21,12 +21,19 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
+                loader: 'file'
             }
         ]
     },
     plugins: [htmlWebpackPlugin],
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx"],
+        alias: {
+            modules: __dirname + '/node_modules/',
+        }
     },
     devServer: {
         port: 3001

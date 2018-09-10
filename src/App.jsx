@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import './components/template/dependencies'
 
+import React, { Component } from 'react';
+import SideBar from './components/template/sideBar'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <p>First teste - Webpack</p>
+		<SideBar />
+		<div className="content-wrapper">
+		</div>
       </div>
     );
   }
