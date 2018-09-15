@@ -175,7 +175,7 @@ class PersistentDrawer extends Component {
               [classes[`contentShift-${anchor}`]]: open,
             })}>
             <div className={classes.drawerHeader} />
-            <Typography>{'Menu Principal'}</Typography>
+            <Typography>{'teste'}</Typography>
           </main>
           {after}
         </div>
