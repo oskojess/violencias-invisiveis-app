@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import * as React from "react";
+import { withRouter } from "react-router";
 
-class Dashboard extends Component {
+class Dashboard extends React.Component {
   render() {
     return (
       <div>
@@ -12,4 +11,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

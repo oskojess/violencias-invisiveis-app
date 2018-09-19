@@ -1,27 +1,26 @@
 import React from "react";
-import { Router, Route, Redirect, Switch } from "react-router-dom";
+import { browserHistory } from "react-router";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import App from "../../App";
+import AppBarCard from "../components/template/AppBarCard";
 import Dashboard from "../components/Dashboard";
 
-import createBrowserHistory from "history/createBrowserHistory";
-
-const customHistory = createBrowserHistory();
-
-export default class Routes extends React.Component {
+class Routes extends React.Component {
   render() {
     return (
-      <Router history={customHistory}>
+      <BrowserRouter>
         <Switch>
-          <Route path="/" component={App} />
+          <Route exact={true} path="/" component={AppBarCard} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/novoBaixoAssinado" component={Dashboard} />
-          <Route path="/acompanharBaixoAssinado" component={Dashboard} />
+          <Route path="/new" component={Dashboard} />
+          <Route path="/follow" component={Dashboard} />
           <Route path="/tutorial" component={Dashboard} />
-          <Route path="/perfil" component={Dashboard} />
+          <Route path="/profile" component={Dashboard} />
           <Redirect from="*" to="/" />
         </Switch>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
+
+export default Routes;

@@ -13,8 +13,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
 import { withRouter } from "react-router";
+import Dashboard from './../Dashboard';
 
 const drawerWidth = 240;
 
@@ -115,7 +115,7 @@ class AppBarCard extends Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, history } = this.props;
     console.log("PROPS: ", this.props);
 
     const { anchor, open } = this.state;
@@ -139,14 +139,14 @@ class AppBarCard extends Component {
           </IconButton>
         </div>
         <Divider />
-        <MenuItem onClick={() => this.props.history.push("/dashboard")}>
+        <MenuItem onClick={() => history.push("/new")}>
           Iniciar baixo-assinado
         </MenuItem>
-        <MenuItem onClick={this.handleClose}>
+        <MenuItem onClick={() => history.push("/follow")}>
           Acompanhar baixo-assinado
         </MenuItem>
-        <MenuItem onClick={this.handleClose}>Tutorial</MenuItem>
-        <MenuItem onClick={this.handleClose}>Perfil</MenuItem>
+        <MenuItem onClick={() => history.push("/tutorial")}>Tutorial</MenuItem>
+        <MenuItem onClick={() => history.push("/profile")}>Perfil</MenuItem>
       </Drawer>
     );
 
@@ -194,7 +194,7 @@ class AppBarCard extends Component {
             )}
           >
             <div className={classes.drawerHeader} />
-            <Typography>{"Teste"}</Typography>
+            <Dashboard />
           </main>
           {after}
         </div>
