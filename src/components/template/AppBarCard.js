@@ -4,17 +4,7 @@ import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import Drawer from "./Drawer";
 import AppBar from "./AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import MenuItem from "@material-ui/core/MenuItem";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { withRouter } from "react-router";
-import Dashboard from './../Dashboard';
 
 const drawerWidth = 240;
 
@@ -94,7 +84,8 @@ const styles = theme => ({
   },
   "contentShift-right": {
     marginRight: 0
-  }
+  },
+  
 });
 
 class AppBarCard extends Component {
@@ -127,14 +118,16 @@ class AppBarCard extends Component {
             history={history}
             anchor={anchor}
             open={open}
-            handleDrawerOpen={()=>this.handleDrawerOpen()} />
+            handleDrawerOpen={() => this.handleDrawerOpen()}
+          />
           <Drawer
             classes={classes}
             theme={theme}
             history={history}
             anchor={anchor}
             open={open}
-            handleDrawerClose={()=>this.handleDrawerClose()} />
+            handleDrawerClose={() => this.handleDrawerClose()}
+          />
           <main
             className={classNames(
               classes.content,
@@ -143,7 +136,8 @@ class AppBarCard extends Component {
                 [classes.contentShift]: open,
                 [classes[`contentShift-${anchor}`]]: open
               }
-            )}>
+            )}
+          >
             <div className={classes.drawerHeader} />
             {this.props.children}
           </main>

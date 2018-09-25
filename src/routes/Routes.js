@@ -1,5 +1,4 @@
 import React from "react";
-import { Router, browserHistory } from "react-router";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import App from "../../App";
@@ -14,7 +13,7 @@ class Routes extends React.Component {
     return (
       <BrowserRouter>
         <App>
-          <Switch>          
+          <Switch>
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/new" component={StartPetition} />
             <Route path="/follow" component={FollowPetition} />

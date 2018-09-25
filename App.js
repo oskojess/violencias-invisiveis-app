@@ -3,11 +3,7 @@ import AppBarCard from "./src/components/template/AppBarCard";
 
 class App extends React.Component {
   render() {
-    return (
-        <AppBarCard>
-        	{this.props.children}
-        </AppBarCard>
-    );
+    return <AppBarCard>{this.props.children}</AppBarCard>;
   }
 }
 
