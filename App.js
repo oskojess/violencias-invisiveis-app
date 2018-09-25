@@ -1,12 +1,12 @@
 import * as React from "react";
-import SideBar from "./src/components/template/SideBar";
+import AppBarCard from "./src/components/template/AppBarCard";
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <SideBar />
-      </div>
+        <AppBarCard>
+        	{this.props.children}
+        </AppBarCard>
     );
   }
 }

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
+import Drawer from "./Drawer";
+import AppBar from "./AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -116,73 +116,25 @@ class AppBarCard extends Component {
 
   render() {
     const { classes, theme, history } = this.props;
-    console.log("PROPS: ", this.props);
-
     const { anchor, open } = this.state;
-
-    const drawer = (
-      <Drawer
-        variant="persistent"
-        anchor={anchor}
-        open={open}
-        classes={{
-          paper: classes.drawerPaper
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={() => this.handleDrawerClose()}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <MenuItem onClick={() => history.push("/new")}>
-          Iniciar baixo-assinado
-        </MenuItem>
-        <MenuItem onClick={() => history.push("/follow")}>
-          Acompanhar baixo-assinado
-        </MenuItem>
-        <MenuItem onClick={() => history.push("/tutorial")}>Tutorial</MenuItem>
-        <MenuItem onClick={() => history.push("/profile")}>Perfil</MenuItem>
-      </Drawer>
-    );
-
-    let before = null;
-    let after = null;
-
-    if (anchor === "left") {
-      before = drawer;
-    } else {
-      after = drawer;
-    }
 
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <AppBar
-            className={classNames(classes.appBar, {
-              [classes.appBarShift]: open,
-              [classes[`appBarShift-${anchor}`]]: open
-            })}
-          >
-            <Toolbar disableGutters={!open}>
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={() => this.handleDrawerOpen()}
-                className={classNames(classes.menuButton, open && classes.hide)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
-                Violências Invisíveis
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          {before}
+            classes={classes}
+            theme={theme}
+            history={history}
+            anchor={anchor}
+            open={open}
+            handleDrawerOpen={()=>this.handleDrawerOpen()} />
+          <Drawer
+            classes={classes}
+            theme={theme}
+            history={history}
+            anchor={anchor}
+            open={open}
+            handleDrawerClose={()=>this.handleDrawerClose()} />
           <main
             className={classNames(
               classes.content,
@@ -191,12 +143,10 @@ class AppBarCard extends Component {
                 [classes.contentShift]: open,
                 [classes[`contentShift-${anchor}`]]: open
               }
-            )}
-          >
+            )}>
             <div className={classes.drawerHeader} />
-            <Dashboard />
+            {this.props.children}
           </main>
-          {after}
         </div>
       </div>
     );
