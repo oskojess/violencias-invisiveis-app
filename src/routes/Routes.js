@@ -2,10 +2,9 @@ import React from "react";
 import { Router, browserHistory } from "react-router";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import AppBarCard from "../components/template/AppBarCard";
 import App from "../../App";
-import Dashboard from "../components/Dashboard";
 
+import Dashboard from "../components/Dashboard";
 import Tutorial from "../components/users/components/tutorial/TutorialCard";
 import StartPetition from "../components/users/components/petitions/card/StartPetitionCard";
 import FollowPetition from "../components/users/components/petitions/card/FollowPetitionCard";
