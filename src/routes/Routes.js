@@ -1,23 +1,28 @@
 import React from "react";
-import { browserHistory } from "react-router";
+import { Router, browserHistory } from "react-router";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import AppBarCard from "../components/template/AppBarCard";
+import App from "../../App";
+
 import Dashboard from "../components/Dashboard";
+import Tutorial from "../components/users/components/tutorial/TutorialCard";
+import StartPetition from "../components/users/components/petitions/card/StartPetitionCard";
+import FollowPetition from "../components/users/components/petitions/card/FollowPetitionCard";
 
 class Routes extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <Route exact={true} path="/" component={AppBarCard} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/new" component={Dashboard} />
-          <Route path="/follow" component={Dashboard} />
-          <Route path="/tutorial" component={Dashboard} />
-          <Route path="/profile" component={Dashboard} />
-          <Redirect from="*" to="/" />
-        </Switch>
+        <App>
+          <Switch>          
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/new" component={StartPetition} />
+            <Route path="/follow" component={FollowPetition} />
+            <Route path="/tutorial" component={Tutorial} />
+            <Route path="/profile" component={Dashboard} />
+            <Redirect from="*" to="/dashboard" />
+          </Switch>
+        </App>
       </BrowserRouter>
     );
   }
