@@ -6,7 +6,9 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = () => ({
   button: {
     borderRadius: "20px",
-    padding: "8px 35px"
+    padding: "8px 35px",
+    color: "#fff",
+    borderColor: "#fff"
   }
 });
 

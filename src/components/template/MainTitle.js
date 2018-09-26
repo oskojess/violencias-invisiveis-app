@@ -8,10 +8,11 @@ const styles = () => ({
   root: {
     padding: "5px"
   },
-  center: {
+  title: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    color: "#1ea896"
   },
   icon: {
     paddingRight: "5px",
@@ -24,7 +25,7 @@ class MainTitle extends React.Component {
     const { classes, content, icon } = this.props;
     return (
       <div className={classes.root}>
-        <Typography variant="title" align="center" className={classes.center}>
+        <Typography variant="title" align="center" className={classes.title}>
           {icon !== '' ? <Icon className={classes.icon}>{icon}</Icon> : <div></div>}
           <div>{content}</div>
         </Typography>

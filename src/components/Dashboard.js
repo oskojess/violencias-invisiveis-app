@@ -15,35 +15,38 @@ const styles = () => ({
   text: {
     padding: "1em"
   },
-  center: {
+  cardTitle: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    color: "#fff"
   },
   icon: {
     paddingRight: "5px",
     fontSize: "26px"
   },
-  cardSpace: {
-    margin: "0em 5em 0em 5em"
+  card: {
+    backgroundColor: "#1ea896"
   },
-  CardContent: {
+  cardContent: {
     paddingTop: "8px",
     paddingBottom: "8px"
   },
-  CardActions: {
+  cardActions: {
     paddingTop: "16px",
     paddingBottom: "16px",
     display: "flex",
     justifyContent: "center"
   },
-  TitleDivider: {
-    height: "3px"
+  titleDivider: {
+    height: "3px",
+    backgroundColor: "#1ea896"
   },
   cardDivider: {
     width: "90%",
     textAlign: "center",
-    margin: "0 auto"
+    margin: "0 auto",
+    backgroundColor: "#fff"
   }
 });
 
@@ -53,22 +56,22 @@ class Dashboard extends React.Component {
     return (
       <div>
         <MainTitle content="BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS" icon="stars"></MainTitle>
-        <Divider className={classes.TitleDivider} />
+        <Divider className={classes.titleDivider} />
         <Typography align="justify" className={classes.text}>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
           diam nonummy nibh euismod tincidunt ut laoreet dolore magna
           aliquam erat volutpat.
         </Typography>
-        <Card className={classes.cardSpace}>
-          <CardContent className={classes.CardContent}>
-            <Typography variant="subheading" className={classes.center}>
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="subheading" className={classes.cardTitle}>
               <Icon className={classes.icon}>star_border</Icon>
               INICIAR UM ABAIXO-ASSINADO
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider}/>
-          <CardActions className={classes.CardActions}>
-          <MainButton content="COMEÇAR"></MainButton>
+          <CardActions className={classes.cardActions}>
+            <MainButton content="COMEÇAR"></MainButton>
           </CardActions>
         </Card>
       </div>
