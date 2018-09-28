@@ -12,8 +12,11 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
+  space: {
+    height: "25px"
+  },
   text: {
-    padding: "1em"
+    paddingBottom: "1em"
   },
   cardTitle: {
     display: "flex",
@@ -57,6 +60,7 @@ class Dashboard extends React.Component {
       <div>
         <MainTitle content="BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS" icon="stars"></MainTitle>
         <Divider className={classes.titleDivider} />
+        <div className={classes.space}></div>
         <Typography align="justify" className={classes.text}>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
           diam nonummy nibh euismod tincidunt ut laoreet dolore magna
