@@ -6,7 +6,7 @@ import App from "../../App";
 import Dashboard from "../components/Dashboard";
 import Tutorial from "../components/users/components/tutorial/TutorialCard";
 import StartPetition from "../components/users/components/petitions/card/StartPetitionCard";
-import FollowPetition from "../components/users/components/petitions/card/FollowPetitionCard";
+import FollowPetitionCard from "../components/users/components/petitions/card/FollowPetitionCard";
 
 class Routes extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Routes extends React.Component {
           <Switch>
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/new" component={StartPetition} />
-            <Route path="/follow" component={FollowPetition} />
+            <Route path="/follow" component={FollowPetitionCard} />
             <Route path="/tutorial" component={Tutorial} />
             <Route path="/profile" component={Dashboard} />
             <Redirect from="*" to="/dashboard" />
