@@ -1,4 +1,4 @@
-**tep by step:**
+**Step by step:**
 
 Update(master):
 
