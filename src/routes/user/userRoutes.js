@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import App from "../../App";
+import App from "../../../App";
 
-import Dashboard from "../components/Dashboard";
-import Tutorial from "../components/users/components/tutorial/TutorialCard";
-import StartPetition from "../components/users/components/petitions/card/StartPetitionCard";
-import FollowPetitionCard from "../components/users/components/petitions/card/FollowPetitionCard";
+import Dashboard from "../../components/Dashboard";
+import Tutorial from "../../components/user/components/tutorial/TutorialCard";
+import StartPetition from "../../components/user/components/petitions/card/StartPetitionCard";
+import FollowPetitionCard from "../../components/user/components/petitions/card/FollowPetitionCard";
 
-class Routes extends React.Component {
+class UserRoutes extends React.Component {
   render() {
     return (
       <BrowserRouter>
@@ -27,4 +27,4 @@ class Routes extends React.Component {
   }
 }
 
-export default Routes;
+export default UserRoutes;

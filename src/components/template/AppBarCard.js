@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import Drawer from "./Drawer";
+import UserDrawer from "./UserDrawer";
+
 import AppBar from "./AppBar";
 import { withRouter } from "react-router";
+//import AdminDrawer from "./AdminDrawer";
 
 const drawerWidth = 240;
 
@@ -84,8 +86,7 @@ const styles = theme => ({
   },
   "contentShift-right": {
     marginRight: 0
-  },
-  
+  }
 });
 
 class AppBarCard extends Component {
@@ -120,7 +121,7 @@ class AppBarCard extends Component {
             open={open}
             handleDrawerOpen={() => this.handleDrawerOpen()}
           />
-          <Drawer
+          <UserDrawer
             classes={classes}
             theme={theme}
             history={history}

@@ -6,8 +6,8 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import MainTitle from "../components/template/MainTitle";
-import MainButton from "./template/MainButton";
+import MainTitle from "../template/MainTitle";
+import MainButton from "../template/MainButton";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -53,7 +53,7 @@ const styles = () => ({
   }
 });
 
-class Dashboard extends React.Component {
+class AdminDashboard extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -69,22 +69,37 @@ class Dashboard extends React.Component {
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography variant="subheading" className={classes.cardTitle}>
-              <Icon className={classes.icon}>star_border</Icon>
-              INICIAR UM ABAIXO-ASSINADO
+              <Icon className={classes.icon}>description</Icon>
+              PETIÇÕES
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
           <CardActions className={classes.cardActions}>
-            <MainButton content="COMEÇAR" />
+            <MainButton content="VER" />
           </CardActions>
         </Card>
+        <div>
+          <div className={classes.space} />
+          <Card className={classes.card}>
+            <CardContent className={classes.cardContent}>
+              <Typography variant="subheading" className={classes.cardTitle}>
+                <Icon className={classes.icon}>error_outline</Icon>
+                TUTORIAL
+              </Typography>
+            </CardContent>
+            <Divider className={classes.cardDivider} />
+            <CardActions className={classes.cardActions}>
+              <MainButton content="VER" />
+            </CardActions>
+          </Card>
+        </div>
       </div>
     );
   }
 }
 
-Dashboard.propTypes = {
+AdminDashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(Dashboard));
+export default withRouter(withStyles(styles)(AdminDashboard));

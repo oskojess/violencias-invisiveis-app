@@ -10,7 +10,8 @@ import { AppContainer, hot } from "react-hot-loader";
 
 //import reducers from "./src/reducers/reducers";
 
-import Routes from "./src/routes/Routes";
+import UserRoutes from "./src/routes/user/userRoutes";
+//import AdminRoutes from "./src/routes/admin/adminRoutes";
 
 //const devTools =
 //  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -21,7 +22,7 @@ import Routes from "./src/routes/Routes";
 
 ReactDOM.render(
   <AppContainer>
-    <Routes />
+    <UserRoutes />
   </AppContainer>,
   document.getElementById("root")
 );

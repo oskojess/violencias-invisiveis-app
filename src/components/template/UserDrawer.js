@@ -12,7 +12,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { withRouter } from "react-router";
 
-class Drawer extends Component {
+class UserRoutes extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +27,8 @@ class Drawer extends Component {
         open={open}
         classes={{
           paper: classes.drawerPaper
-        }}>
+        }}
+      >
         <div className={classes.drawerHeader}>
           <Typography variant="title" color="inherit" noWrap>
             Menu
@@ -38,12 +39,18 @@ class Drawer extends Component {
             ) : (
               <ChevronLeftIcon />
             )}
-          </IconButton>          
+          </IconButton>
         </div>
         <Divider />
-        <MenuItem onClick={() => history.push("/dashboard")}>Dashboard</MenuItem>
-        <MenuItem onClick={() => history.push("/new")}>Iniciar baixo-assinado</MenuItem>
-        <MenuItem onClick={() => history.push("/follow")}>Acompanhar baixo-assinado</MenuItem>
+        <MenuItem onClick={() => history.push("/dashboard")}>
+          Dashboard
+        </MenuItem>
+        <MenuItem onClick={() => history.push("/new")}>
+          Iniciar baixo-assinado
+        </MenuItem>
+        <MenuItem onClick={() => history.push("/follow")}>
+          Acompanhar baixo-assinado
+        </MenuItem>
         <MenuItem onClick={() => history.push("/tutorial")}>Tutorial</MenuItem>
         <MenuItem onClick={() => history.push("/profile")}>Perfil</MenuItem>
       </DrawerComponent>
@@ -51,4 +58,4 @@ class Drawer extends Component {
   }
 }
 
-export default withRouter(Drawer);
+export default withRouter(UserRoutes);
