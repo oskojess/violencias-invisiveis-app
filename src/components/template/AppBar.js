@@ -24,28 +24,28 @@ class AppBar extends Component {
     const { classes, anchor, open } = this.props;
 
     return (
-      <MuiThemeProvider theme={theme}>
-        <AppBarComponent
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-            [classes[`appBarShift-${anchor}`]]: open
-          })}
-        >
-          <Toolbar disableGutters={!open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={() => this.props.handleDrawerOpen()}
-              className={classNames(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="title" color="inherit" noWrap>
-              Violências Invisíveis
-            </Typography>
-          </Toolbar>
-        </AppBarComponent>
-      </MuiThemeProvider>
+
+      <AppBarComponent
+        style={{ backgroundColor: '#9E002D' }}
+        className={classNames(classes.appBar, {
+          [classes.appBarShift]: open,
+          [classes[`appBarShift-${anchor}`]]: open
+        })}
+      >
+        <Toolbar disableGutters={!open}>
+          <IconButton
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={() => this.props.handleDrawerOpen()}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" noWrap>
+            Violências Invisíveis
+          </Typography>
+        </Toolbar>
+      </AppBarComponent>
     );
   }
 }
