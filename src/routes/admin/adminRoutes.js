@@ -7,7 +7,7 @@ import AdminDashboard from "../../components/admin/AdminDashboard";
 import AdminProfile from "../../components/admin/components/card/AdminProfile";
 import Petitions from "../../components/admin/components/card/Petitions";
 
-class UserRoutesAdminRoutes extends React.Component {
+class AdminRoutes extends React.Component {
   render() {
     return (
       <BrowserRouter>
