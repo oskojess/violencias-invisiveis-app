@@ -6,12 +6,25 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { withRouter } from "react-router";
+import PropTypes from "prop-types";
+import {
+  withStyles,
+  MuiThemeProvider,
+  createMuiTheme
+} from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  appBar: {
+    backgroundColor: "#9E002D"
+  }
+});
 
 class AppBar extends Component {
   render() {
     const { classes, anchor, open } = this.props;
 
     return (
+
       <AppBarComponent
         style={{ backgroundColor: '#9E002D' }}
         className={classNames(classes.appBar, {
@@ -37,4 +50,8 @@ class AppBar extends Component {
   }
 }
 
-export default withRouter(AppBar);
+AppBar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withRouter(withStyles(theme)(AppBar));
