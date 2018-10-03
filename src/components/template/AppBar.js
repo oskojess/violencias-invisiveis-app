@@ -6,14 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { withRouter } from "react-router";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = () => ({
-  appBar: {
-    backgroundColor: "#9E002D"
-  }
-});
 
 class AppBar extends Component {
   render() {
@@ -21,6 +13,7 @@ class AppBar extends Component {
 
     return (
       <AppBarComponent
+        style={{ backgroundColor: '#9E002D' }}
         className={classNames(classes.appBar, {
           [classes.appBarShift]: open,
           [classes[`appBarShift-${anchor}`]]: open
@@ -44,8 +37,4 @@ class AppBar extends Component {
   }
 }
 
-AppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withRouter(withStyles(styles)(AppBar));
+export default withRouter(AppBar);
