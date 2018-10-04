@@ -13,10 +13,24 @@ const styles = () => ({
 });
 
 class MainButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleButton = this.handleButton.bind(this);
+  }
+
+  handleButton() {
+    let audio;
+    if(this.props.content === "COMEÇAR"){
+      audio = new Audio('../../../src/components/audioDescriptions/comecar.mp3');
+    }
+    audio.loop = false;
+    audio.play(); 
+  }
+
   render() {
     const { classes, content } = this.props;
     return (
-      <Button variant="outlined" className={classes.button}>
+      <Button variant="outlined" className={classes.button} onClick={this.handleButton}>
         {content}
       </Button>
     );

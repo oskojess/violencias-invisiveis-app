@@ -31,7 +31,8 @@ const styles = theme => ({
     padding: "8px 5%"
   },
   cardStatus: {
-    display: "flex"
+    display: "flex",
+    cursor: "pointer"
   },
   cardActions: {
     padding: "8px 5%",
@@ -77,11 +78,33 @@ class PetitionCard extends React.Component {
     super(props);
     this.state = { expanded: false };
     this.handleExpandClick = this.handleExpandClick.bind(this);
+    this.handleStatusDescription = this.handleStatusDescription.bind(this);
   }
 
   handleExpandClick() {
     this.setState(state => ({ expanded: !state.expanded }));
+    let audio;
+    if(this.state.expanded){
+      audio = new Audio('../../../src/components/audioDescriptions/mostrarMenos.mp3');
+    }else{
+      audio = new Audio('../../../src/components/audioDescriptions/mostrarMais.mp3');
+    }
+    audio.loop = false;
+    audio.play();
   };
+
+  handleStatusDescription() {
+    let audio;
+    if(this.props.status === 1) {
+      audio = new Audio('../../../src/components/audioDescriptions/aprovado.mp3');
+    }else if(this.props.status === 2){ 
+      audio = new Audio('../../../src/components/audioDescriptions/aguardandoAprovacao.mp3');
+    }else if(this.props.status === 3){ 
+      audio = new Audio('../../../src/components/audioDescriptions/reprovado.mp3');
+    }
+    audio.loop = false;
+    audio.play();
+  }
 
   render() {
     const { classes, status, protocol, description, observations } = this.props;
@@ -92,7 +115,7 @@ class PetitionCard extends React.Component {
           <CardContent className={classes.cardContent}>
             <Typography variant="subheading" className={classes.cardTitle}>
               <div>PROTOCOL0: {protocol}</div>
-              <div className={classes.cardStatus}>STATUS: <StatusIcon status={status} /></div>
+              <div className={classes.cardStatus} onClick={this.handleStatusDescription}>STATUS: <StatusIcon status={status} /></div>
             </Typography>
           </CardContent>
 
@@ -122,7 +145,7 @@ class PetitionCard extends React.Component {
               <div className={classes.audioIcon}>
                 <IconButton 
                 className={classes.description}
-                aria-expanded={this.state.expanded}
+                onClick={this.handleStatusDescription}
                 aria-label="Audio Descrição"
                 >
                   <VolumeUpIcon className={classes.colorWhite} />
