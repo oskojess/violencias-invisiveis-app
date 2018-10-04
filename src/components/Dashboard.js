@@ -22,7 +22,8 @@ const styles = () => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    color: "#fff"
+    color: "#fff",
+    cursor: "pointer"
   },
   icon: {
     paddingRight: "5px",
@@ -54,6 +55,20 @@ const styles = () => ({
 });
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCardTitleDescription = this.handleCardTitleDescription.bind(this);
+  }
+
+  handleCardTitleDescription(title) {
+    let audio;
+    if(title === "INICIAR UM ABAIXO-ASSINADO"){
+      audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
+    }
+    audio.loop = false;
+    audio.play(); 
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -68,7 +83,7 @@ class Dashboard extends React.Component {
         </Typography>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="subheading" className={classes.cardTitle}>
+            <Typography variant="subheading" className={classes.cardTitle} onClick={() => {this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO")}}>
               <Icon className={classes.icon}>star_border</Icon>
               INICIAR UM ABAIXO-ASSINADO
             </Typography>

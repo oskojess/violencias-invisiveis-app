@@ -15,6 +15,30 @@ import { withRouter } from "react-router";
 class UserRoutes extends Component {
   constructor(props) {
     super(props);
+    this.handleChangePage = this.handleChangePage.bind(this);
+  }
+
+  handleChangePage(button) {
+    new Promise((resolve, reject) => {
+      let audio;
+      if(button === "dashboard"){
+        audio = new Audio('../../../src/components/audioDescriptions/dashboard.mp3');
+      }else if(button === "new"){
+        audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
+      }else if(button === "follow"){
+        audio = new Audio('../../../src/components/audioDescriptions/acompanharAbaixoAssinado.mp3');
+      }else if(button === "tutorial"){
+        audio = new Audio('../../../src/components/audioDescriptions/tutorial.mp3');
+      }else if(button === "profile"){
+        audio = new Audio('../../../src/components/audioDescriptions/perfil.mp3');
+      }
+      audio.loop = false;
+      audio.play(); 
+      resolve();
+    })
+    .then(() => {
+      this.props.history.push('/' + button);
+    })
   }
 
   render() {
@@ -42,17 +66,17 @@ class UserRoutes extends Component {
           </IconButton>
         </div>
         <Divider />
-        <MenuItem onClick={() => history.push("/dashboard")}>
+        <MenuItem onClick={() => this.handleChangePage("dashboard")}>
           Dashboard
         </MenuItem>
-        <MenuItem onClick={() => history.push("/new")}>
+        <MenuItem onClick={() => this.handleChangePage("new")}>
           Iniciar baixo-assinado
         </MenuItem>
-        <MenuItem onClick={() => history.push("/follow")}>
+        <MenuItem onClick={() => this.handleChangePage("follow")}>
           Acompanhar baixo-assinado
         </MenuItem>
-        <MenuItem onClick={() => history.push("/tutorial")}>Tutorial</MenuItem>
-        <MenuItem onClick={() => history.push("/profile")}>Perfil</MenuItem>
+        <MenuItem onClick={() => this.handleChangePage("tutorial")}>Tutorial</MenuItem>
+        <MenuItem onClick={() => this.handleChangePage("profile")}>Perfil</MenuItem>
       </DrawerComponent>
     );
   }

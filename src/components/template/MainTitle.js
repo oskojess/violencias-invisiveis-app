@@ -6,7 +6,8 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
   root: {
-    padding: "5px"
+    padding: "5px",
+    cursor: "pointer"
   },
   title: {
     display: "flex",
@@ -21,10 +22,28 @@ const styles = () => ({
 });
 
 class MainTitle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleTitleDescription = this.handleTitleDescription.bind(this);
+  }
+
+  handleTitleDescription() {
+    let audio;
+    if(this.props.content === "BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS"){
+      audio = new Audio('../../../src/components/audioDescriptions/bemVinda.mp3');
+    }else if(this.props.content === "ACOMPANHAMENTO"){
+      audio = new Audio('../../../src/components/audioDescriptions/acompanhamento.mp3');
+    }else if(this.props.content === "TUTORIAL"){
+      audio = new Audio('../../../src/components/audioDescriptions/tutorial.mp3');
+    }
+    audio.loop = false;
+    audio.play(); 
+  }
+
   render() {
     const { classes, content, icon } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={classes.root} onClick={this.handleTitleDescription}>
         <Typography variant="title" align="center" className={classes.title}>
           {icon !== '' ? <Icon className={classes.icon}>{icon}</Icon> : <div></div>}
           <div>{content}</div>
