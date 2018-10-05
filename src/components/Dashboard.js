@@ -57,20 +57,16 @@ const styles = () => ({
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.handleCardTitleDescription = this.handleCardTitleDescription.bind(
-      this
-    );
+    this.handleCardTitleDescription = this.handleCardTitleDescription.bind(this);
   }
 
   handleCardTitleDescription(title) {
     let audio;
-    if (title === "INICIAR UM ABAIXO-ASSINADO") {
-      audio = new Audio(
-        "../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3"
-      );
+    if(title === "INICIAR UM ABAIXO-ASSINADO"){
+      audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
     }
     audio.loop = false;
-    audio.play();
+    audio.play(); 
   }
 
   render() {
@@ -87,13 +83,7 @@ class Dashboard extends React.Component {
         </Typography>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography
-              variant="subheading"
-              className={classes.cardTitle}
-              onClick={() => {
-                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
-              }}
-            >
+            <Typography variant="subheading" className={classes.cardTitle} onClick={() => {this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO")}}>
               <Icon className={classes.icon}>star_border</Icon>
               INICIAR UM ABAIXO-ASSINADO
             </Typography>
@@ -103,23 +93,17 @@ class Dashboard extends React.Component {
             <MainButton content="COMEÇAR" />
           </CardActions>
         </Card>
-
         <div className={classes.space} />
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography
-              variant="subheading"
-              className={classes.cardTitle}
-              onClick={() => {
-                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
-              }}
-            >
+          <Typography variant="subheading" className={classes.cardTitle} onClick={() => {this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO")}}>
               <Icon className={classes.icon}>star_border</Icon>
               ACOMPANHAMENTO
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
         </Card>
+
       </div>
     );
   }
