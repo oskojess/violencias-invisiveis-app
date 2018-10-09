@@ -39,9 +39,10 @@ class SimpleDialog extends React.Component {
   
       return (
         <Dialog 
+          role="dialog"
           open={this.state.open} 
           onClose={this.handleClose}
-          aria-labelledby="simple-dialog-title" 
+          aria-labelledby={title} 
         >
           <MainTitle content={title} icon="error_outline" className={classes.space}></MainTitle>
           <Typography variant="subheading" align="justify" className={classes.space}>

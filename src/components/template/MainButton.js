@@ -30,7 +30,7 @@ class MainButton extends React.Component {
   render() {
     const { classes, content } = this.props;
     return (
-      <Button variant="outlined" className={classes.button} onClick={this.handleButton}>
+      <Button type="button" role="button" aria-label={content} variant="outlined" className={classes.button} onClick={this.handleButton}>
         {content}
       </Button>
     );

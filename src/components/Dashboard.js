@@ -60,6 +60,10 @@ class Dashboard extends React.Component {
     this.handleCardTitleDescription = this.handleCardTitleDescription.bind(this);
   }
 
+  componentDidMount(){
+    document.title = "Violências Invisíveis - Dashboard"
+  }
+
   handleCardTitleDescription(title) {
     let audio;
     if(title === "INICIAR UM ABAIXO-ASSINADO"){

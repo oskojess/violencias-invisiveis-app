@@ -44,9 +44,9 @@ class MainTitle extends React.Component {
     const { classes, content, icon } = this.props;
     return (
       <div className={classes.root} onClick={this.handleTitleDescription}>
-        <Typography variant="title" align="center" className={classes.title}>
+        <Typography variant="title" align="center" className={classes.title} aria-label={content}>
           {icon !== '' ? <Icon className={classes.icon}>{icon}</Icon> : <div></div>}
-          <div>{content}</div>
+          <div role="heading">{content}</div>
         </Typography>
       </div>
     );
