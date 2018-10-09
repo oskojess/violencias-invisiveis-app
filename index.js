@@ -7,6 +7,7 @@ import { AppContainer, hot } from "react-hot-loader";
 import UserRoutes from "./src/routes/user/userRoutes";
 //import AdminRoutes from "./src/routes/admin/adminRoutes";
 
+document.documentElement.lang = 'pt';
 
 ReactDOM.render(
   <AppContainer>
