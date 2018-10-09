@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
 import DrawerComponent from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { withRouter } from "react-router";
 
 class UserRoutes extends Component {
@@ -66,17 +64,21 @@ class UserRoutes extends Component {
           </IconButton>
         </div>
         <Divider />
-        <MenuItem onClick={() => this.handleChangePage("dashboard")}>
-          Dashboard
-        </MenuItem>
-        <MenuItem onClick={() => this.handleChangePage("new")}>
-          Iniciar baixo-assinado
-        </MenuItem>
-        <MenuItem onClick={() => this.handleChangePage("follow")}>
-          Acompanhar baixo-assinado
-        </MenuItem>
-        <MenuItem onClick={() => this.handleChangePage("tutorial")}>Tutorial</MenuItem>
-        <MenuItem onClick={() => this.handleChangePage("profile")}>Perfil</MenuItem>
+        <ListItem button onClick={() => this.handleChangePage("dashboard")} aria-label="Dashboard">
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleChangePage("new")} aria-label="Iniciar baixo-assinado">
+          <ListItemText primary="Iniciar baixo-assinado" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleChangePage("follow")} aria-label="Acompanhar baixo-assinado">
+          <ListItemText primary="Acompanhar baixo-assinado" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleChangePage("tutorial")} aria-label="Tutorial">
+          <ListItemText primary="Tutorial" />
+        </ListItem>
+        <ListItem button onClick={() => this.handleChangePage("profile")} aria-label="Perfil">
+          <ListItemText primary="Perfil" />
+        </ListItem>
       </DrawerComponent>
     );
   }
