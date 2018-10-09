@@ -17,13 +17,17 @@ const styles = () => ({
 });
 
 class FollowPetitionCard extends React.Component {
+  componentDidMount(){
+    document.title = "Violências Invisíveis - Acompanhar Abaixo Assinado"
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
         <MainTitle content="ACOMPANHAMENTO" icon="access_time" />
-        <Divider className={classes.titleDivider} />
-        <div className={classes.space} />
+        <Divider className={classes.titleDivider} aria-hidden="true" />
+        <div className={classes.space} aria-hidden="true" />
         <PetitionCard
           status={1}
           protocol={"COD918375"}
@@ -33,8 +37,8 @@ class FollowPetitionCard extends React.Component {
           observations={"Lorem ipsum dolor sit amet, consectetuer adipiscing."}
         />
         <div>
-          <Divider className={classes.titleDivider} />
-          <div className={classes.space} />
+          <Divider className={classes.titleDivider} aria-hidden="true" />
+          <div className={classes.space} aria-hidden="true" />
           <PetitionCard
             status={0}
             protocol={"COD918375"}
@@ -46,8 +50,8 @@ class FollowPetitionCard extends React.Component {
             }
           />
           <div>
-            <Divider className={classes.titleDivider} />
-            <div className={classes.space} />
+            <Divider className={classes.titleDivider} aria-hidden="true" />
+            <div className={classes.space} aria-hidden="true" />
             <PetitionCard
               status={1}
               protocol={"COD918375"}
@@ -59,8 +63,8 @@ class FollowPetitionCard extends React.Component {
               }
             />
             <div>
-              <Divider className={classes.titleDivider} />
-              <div className={classes.space} />
+              <Divider className={classes.titleDivider} aria-hidden="true" />
+              <div className={classes.space} aria-hidden="true" />
               <PetitionCard
                 status={1}
                 protocol={"COD918375"}
