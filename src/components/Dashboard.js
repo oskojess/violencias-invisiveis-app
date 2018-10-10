@@ -74,7 +74,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, history } = this.props;
     return (
       <div>
         <MainTitle content="BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS" icon="stars" />
@@ -94,7 +94,7 @@ class Dashboard extends React.Component {
           </CardContent>
           <Divider className={classes.cardDivider} />
           <CardActions className={classes.cardActions}>
-            <MainButton content="COMEÇAR" />
+            <MainButton content="COMEÇAR" action={() => history.push("/new")} />
           </CardActions>
         </Card>
         <div className={classes.space} />
