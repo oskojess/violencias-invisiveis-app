@@ -2,7 +2,7 @@ import * as React from "react";
 import { withRouter } from "react-router";
 import Divider from "@material-ui/core/Divider";
 import MainTitle from "../../../template/MainTitle";
-import PetitionCard from "../../../template/PetitionCard";
+import AnalysisCard from "../../../template/AnalysisCard";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -13,32 +13,33 @@ const styles = () => ({
   },
   space: {
     height: "25px"
-  }
+  },
+  backgroundCard: {backgroundColor: "#fff"}
 });
 
-class Petitions extends React.Component {
+class Analysis extends React.Component {
   render() {
-    const { classes, history } = this.props;
+    const { classes } = this.props;
     return (
       <div>
-        <MainTitle content="PETIÇÕES" icon="access_time" />
+        <MainTitle content="ANALISAR PETIÇÕES" icon="access_time" />
         <Divider className={classes.titleDivider} />
         <div className={classes.space} />
 
-        <PetitionCard
+        <AnalysisCard
+          className={classes.backgroundCard}
           status={1}
           protocol={"COD918375"}
           description={"Lorem ipsum dolor sit amet, consectetuer adipiscing."}
           observations={"Lorem ipsum dolor sit amet, consectetuer adipiscing."}
-          action={() => history.push("/analysis")}
         />
       </div>
     );
   }
 }
 
-Petitions.propTypes = {
+Analysis.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRouter(withStyles(styles)(Petitions));
+export default withRouter(withStyles(styles)(Analysis));
