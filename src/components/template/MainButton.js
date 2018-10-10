@@ -25,6 +25,7 @@ class MainButton extends React.Component {
     }
     audio.loop = false;
     audio.play(); 
+    this.props.action();
   }
 
   render() {
