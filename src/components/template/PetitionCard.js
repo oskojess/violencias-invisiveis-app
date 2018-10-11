@@ -13,10 +13,12 @@ import StatusIcon from './StatusIcon';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import classnames from 'classnames';
+import audio from '../../utils/audioConfig';
 
 const styles = theme => ({
   colorWhite: {
-    color: "#fff"
+    color: "#fff",
+    cursor: "pointer"
   },
   card: {
     backgroundColor: "#1ea896"
@@ -70,6 +72,9 @@ const styles = theme => ({
   },
   expandIconOpen: {
     transform: "rotate(180deg)",
+  },
+  text: {
+    cursor: "pointer"
   }
 });
 
@@ -79,39 +84,43 @@ class PetitionCard extends React.Component {
     this.state = { expanded: false };
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.handleStatusDescription = this.handleStatusDescription.bind(this);
+    this.handleCardDescription = this.handleCardDescription.bind(this);
     this.handleAudioDescription = this.handleAudioDescription.bind(this);
   }
 
   handleExpandClick() {
     this.setState(state => ({ expanded: !state.expanded }));
-    let audio;
     if(this.state.expanded){
-      audio = new Audio('../../../src/components/audioDescriptions/mostrarMenos.mp3');
+      audio.text = 'Mostrar Menos';
     }else{
-      audio = new Audio('../../../src/components/audioDescriptions/mostrarMais.mp3');
+      audio.text = 'Mostrar Mais';
     }
-    audio.loop = false;
-    audio.play();
+    speechSynthesis.speak(audio);
   };
 
   handleStatusDescription() {
-    let msg = new SpeechSynthesisUtterance();
-    msg.lang = 'pt-BR';
     if(this.props.status === 1) {
-      msg = 'aprovado';
-    }else if(this.props.status === 2){ 
-      msg = 'Aguardando Aprovação';
+      audio.text = 'Status Aprovado';
     }else if(this.props.status === 3){ 
-      msg = 'Reprovado';
+      audio.text = 'Status Reprovado';
+    }else{
+      audio.text = 'Status Aguardando Aprovação';
     }
-    speechSynthesis.speak(msg);
+    speechSynthesis.speak(audio);
   }
 
-  handleAudioDescription() {
-    let msg = new SpeechSynthesisUtterance();
-    msg.lang = 'pt-BR';
-    msg.text = `Descrição ${this.props.description}  Observações ${this.props.observations}`;
-    speechSynthesis.speak(msg);
+  handleCardDescription() {
+    audio.text = `Descrição ${this.props.description}`;
+    speechSynthesis.speak(audio);
+    setTimeout(() => {
+      audio.text = `Observações ${this.props.observations}`;
+      speechSynthesis.speak(audio);
+    }, 1000);
+  }
+
+  handleAudioDescription(text) {
+    audio.text = text;
+    speechSynthesis.speak(audio);
   }
 
   render() {
@@ -122,7 +131,7 @@ class PetitionCard extends React.Component {
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography variant="subheading" className={classes.cardTitle}>
-              <div>PROTOCOL0: {protocol}</div>
+              <div className={classes.text} onClick={() => this.handleAudioDescription(`Protocolo: ${protocol}`)}>PROTOCOLO: {protocol}</div>
               <div className={classes.cardStatus} onClick={this.handleStatusDescription}>STATUS: <StatusIcon status={status} /></div>
             </Typography>
           </CardContent>
@@ -130,10 +139,10 @@ class PetitionCard extends React.Component {
           <Divider className={classes.cardDivider} />
 
           <CardActions className={classes.cardActions}>
-            <Typography variant="subheading" className={classes.colorWhite}>
+            <Typography variant="subheading" className={classes.colorWhite} onClick={() => this.handleAudioDescription(`DESCRIÇÃO`)}>
               DESCRIÇÃO
             </Typography>
-            <Typography variant="body1" className={classes.colorWhite}>
+            <Typography variant="body1" className={classes.colorWhite} onClick={() => this.handleAudioDescription(description)}>
               {description}
             </Typography>
             <div className={classes.cardIcons}>
@@ -153,7 +162,7 @@ class PetitionCard extends React.Component {
               <div className={classes.audioIcon}>
                 <IconButton 
                 className={classes.description}
-                onClick={this.handleAudioDescription}
+                onClick={this.handleCardDescription}
                 aria-label="Audio Descrição"
                 >
                   <VolumeUpIcon className={classes.colorWhite} />
@@ -164,10 +173,10 @@ class PetitionCard extends React.Component {
 
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent className={classes.cardContentCollapse}>
-              <Typography variant="subheading" className={classes.colorWhite}>
+              <Typography variant="subheading" className={classes.colorWhite} onClick={() => this.handleAudioDescription(`OBSERVAÇÕES`)}>
                 OBSERVAÇÕES
               </Typography>
-              <Typography paragraph variant="body1" className={classes.colorWhite}>
+              <Typography paragraph variant="body1" className={classes.colorWhite} onClick={() => this.handleAudioDescription(observations)}>
                 {observations}
               </Typography>
             </CardContent>

@@ -10,6 +10,7 @@ import MainTitle from "../components/template/MainTitle";
 import MainButton from "./template/MainButton";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../utils/audioConfig';
 
 const styles = () => ({
   space: {
@@ -65,10 +66,8 @@ class Dashboard extends React.Component {
   }
 
   handleCardTitleDescription(title) {
-    const msg = new SpeechSynthesisUtterance();
-    msg.text = title;
-    msg.lang = 'pt-BR';
-    speechSynthesis.speak(msg);
+    audio.text = title;
+    speechSynthesis.speak(audio);
   }
 
   render() {

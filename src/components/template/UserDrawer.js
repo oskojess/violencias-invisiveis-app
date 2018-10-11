@@ -8,6 +8,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withRouter } from "react-router";
+import audio from '../../utils/audioConfig';
 
 class UserRoutes extends Component {
   constructor(props) {
@@ -16,15 +17,13 @@ class UserRoutes extends Component {
   }
 
   handleChangePage(button, title) {
-      let msg = new SpeechSynthesisUtterance();
-      msg.lang = 'pt-BR';
-      msg.text = title;
-      speechSynthesis.speak(msg);
+      audio.text = title;
+      speechSynthesis.speak(audio);
       this.props.history.push('/' + button);
   }
 
   render() {
-    const { classes, theme, history, anchor, open } = this.props;
+    const { classes, theme, anchor, open } = this.props;
 
     return (
       <DrawerComponent

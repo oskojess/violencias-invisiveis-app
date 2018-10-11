@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../../utils/audioConfig';
 
 const styles = () => ({
   root: {
@@ -28,10 +29,8 @@ class MainTitle extends React.Component {
   }
 
   handleTitleDescription() {
-    const msg = new SpeechSynthesisUtterance();
-    msg.text = this.props.content;
-    msg.lang = 'pt-BR';
-    speechSynthesis.speak(msg);
+    audio.text = this.props.content;
+    speechSynthesis.speak(audio);
   }
 
   render() {

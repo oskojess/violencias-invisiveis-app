@@ -9,10 +9,12 @@ import PropTypes from "prop-types";
 import Typography from '@material-ui/core/Typography';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import IconButton from '@material-ui/core/IconButton';
+import audio from '../../utils/audioConfig';
 
 const styles = () => ({
-  space: {
-    padding: "10px"
+  text: {
+    padding: "10px",
+    cursor: "pointer"
   },
   dialog: {
     display: "flex"
@@ -58,14 +60,12 @@ class SimpleDialog extends React.Component {
 
     handleClose() {
       this.setState({ open: false });
+      this.handleAudioDescription("Continuar");
     };
 
     handleAudioDescription(text) {
-      const msg = new SpeechSynthesisUtterance();
-      msg.lang = 'pt-BR';
-      console.log(text);
-      msg.text = text || this.props.content;
-      speechSynthesis.speak(msg);
+      audio.text = text;
+      speechSynthesis.speak(audio);
     }
 
     render() {
@@ -80,8 +80,8 @@ class SimpleDialog extends React.Component {
           aria-labelledby={title}
           fullWidth={true} 
         >
-          <MainTitle content={title} icon="error_outline" className={classes.space}></MainTitle>
-          <Typography variant="subheading" align="justify" className={classes.space}>
+          <MainTitle content={title} icon="error_outline" className={classes.text}></MainTitle>
+          <Typography variant="subheading" align="justify" className={classes.text} onClick={() => this.handleAudioDescription(content)}>
            {content}
           </Typography>
           <DialogActions className={classes.buttons}>
@@ -94,7 +94,7 @@ class SimpleDialog extends React.Component {
               <IconButton 
               aria-expanded={this.state.expanded}
               aria-label="Audio Descrição"
-              onClick={this.handleAudioDescription}
+              onClick={() => this.handleAudioDescription(`Tutorial ${content}`)}
               >
                 <VolumeUpIcon className={classes.audioIcon} />
               </IconButton>

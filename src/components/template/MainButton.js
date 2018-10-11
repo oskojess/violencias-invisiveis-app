@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from '@material-ui/core/Button';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../../utils/audioConfig';
 
 const styles = () => ({
   button: {
@@ -19,10 +20,8 @@ class MainButton extends React.Component {
   }
 
   handleButton() {
-    const msg = new SpeechSynthesisUtterance();
-    msg.text = this.props.content;
-    msg.lang = 'pt-BR';
-    speechSynthesis.speak(msg);
+    audio.text = this.props.content;
+    speechSynthesis.speak(audio);
 
     this.props.action();
   }
