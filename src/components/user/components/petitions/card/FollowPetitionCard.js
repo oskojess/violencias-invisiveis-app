@@ -32,9 +32,9 @@ class FollowPetitionCard extends React.Component {
           status={1}
           protocol={"COD918375"}
           description={
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam eratvoluutpat."
+            "Descrição de teste"
           }
-          observations={"Lorem ipsum dolor sit amet, consectetuer adipiscing."}
+          observations={"Observação de teste"}
         />
         <div>
           <Divider className={classes.titleDivider} aria-hidden="true" />
@@ -43,10 +43,10 @@ class FollowPetitionCard extends React.Component {
             status={0}
             protocol={"COD918375"}
             description={
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam eratvoluutpat."
+              "Descrição de teste"
             }
             observations={
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing."
+              "Observação de teste"
             }
           />
           <div>

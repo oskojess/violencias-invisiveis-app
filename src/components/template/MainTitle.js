@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../../utils/audioConfig';
 
 const styles = () => ({
   root: {
@@ -28,16 +29,8 @@ class MainTitle extends React.Component {
   }
 
   handleTitleDescription() {
-    let audio;
-    if(this.props.content === "BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS"){
-      audio = new Audio('../../../src/components/audioDescriptions/bemVinda.mp3');
-    }else if(this.props.content === "ACOMPANHAMENTO"){
-      audio = new Audio('../../../src/components/audioDescriptions/acompanhamento.mp3');
-    }else if(this.props.content === "TUTORIAL"){
-      audio = new Audio('../../../src/components/audioDescriptions/tutorial.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    audio.text = this.props.content;
+    speechSynthesis.speak(audio);
   }
 
   render() {

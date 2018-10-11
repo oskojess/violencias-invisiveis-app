@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DrawerComponent from "@material-ui/core/Drawer";
-import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,6 +8,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withRouter } from "react-router";
+import audio from '../../utils/audioConfig';
 
 class UserRoutes extends Component {
   constructor(props) {
@@ -16,31 +16,14 @@ class UserRoutes extends Component {
     this.handleChangePage = this.handleChangePage.bind(this);
   }
 
-  handleChangePage(button) {
-    new Promise((resolve, reject) => {
-      let audio;
-      if(button === "dashboard"){
-        audio = new Audio('../../../src/components/audioDescriptions/dashboard.mp3');
-      }else if(button === "new"){
-        audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
-      }else if(button === "follow"){
-        audio = new Audio('../../../src/components/audioDescriptions/acompanharAbaixoAssinado.mp3');
-      }else if(button === "tutorial"){
-        audio = new Audio('../../../src/components/audioDescriptions/tutorial.mp3');
-      }else if(button === "profile"){
-        audio = new Audio('../../../src/components/audioDescriptions/perfil.mp3');
-      }
-      audio.loop = false;
-      audio.play(); 
-      resolve();
-    })
-    .then(() => {
+  handleChangePage(button, title) {
+      audio.text = title;
+      speechSynthesis.speak(audio);
       this.props.history.push('/' + button);
-    })
   }
 
   render() {
-    const { classes, theme, history, anchor, open } = this.props;
+    const { classes, theme, anchor, open } = this.props;
 
     return (
       <DrawerComponent
@@ -64,19 +47,19 @@ class UserRoutes extends Component {
           </IconButton>
         </div>
         <Divider />
-        <ListItem button onClick={() => this.handleChangePage("dashboard")} aria-label="Dashboard">
+        <ListItem button onClick={() => this.handleChangePage("dashboard", "Dashboard")} aria-label="Dashboard">
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem button onClick={() => this.handleChangePage("new")} aria-label="Iniciar baixo-assinado">
-          <ListItemText primary="Iniciar baixo-assinado" />
+        <ListItem button onClick={() => this.handleChangePage("new", "Iniciar Abaixo-assinado")} aria-label="Iniciar baixo-assinado">
+          <ListItemText primary="Iniciar abaixo-assinado" />
         </ListItem>
-        <ListItem button onClick={() => this.handleChangePage("follow")} aria-label="Acompanhar baixo-assinado">
-          <ListItemText primary="Acompanhar baixo-assinado" />
+        <ListItem button onClick={() => this.handleChangePage("follow", "Acompanhar Abaixo-assinado")} aria-label="Acompanhar baixo-assinado">
+          <ListItemText primary="Acompanhar abaixo-assinado" />
         </ListItem>
-        <ListItem button onClick={() => this.handleChangePage("tutorial")} aria-label="Tutorial">
+        <ListItem button onClick={() => this.handleChangePage("tutorial", "Tutorial")} aria-label="Tutorial">
           <ListItemText primary="Tutorial" />
         </ListItem>
-        <ListItem button onClick={() => this.handleChangePage("profile")} aria-label="Perfil">
+        <ListItem button onClick={() => this.handleChangePage("profile", "Perfil")} aria-label="Perfil">
           <ListItemText primary="Perfil" />
         </ListItem>
       </DrawerComponent>

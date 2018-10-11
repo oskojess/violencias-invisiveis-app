@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from '@material-ui/core/Button';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../../utils/audioConfig';
 
 const styles = () => ({
   button: {
@@ -19,12 +20,9 @@ class MainButton extends React.Component {
   }
 
   handleButton() {
-    let audio;
-    if(this.props.content === "COMEÇAR"){
-      audio = new Audio('../../../src/components/audioDescriptions/comecar.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    audio.text = this.props.content;
+    speechSynthesis.speak(audio);
+
     this.props.action();
   }
 

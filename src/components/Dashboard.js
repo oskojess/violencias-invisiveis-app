@@ -10,6 +10,7 @@ import MainTitle from "../components/template/MainTitle";
 import MainButton from "./template/MainButton";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import audio from '../utils/audioConfig';
 
 const styles = () => ({
   space: {
@@ -65,12 +66,8 @@ class Dashboard extends React.Component {
   }
 
   handleCardTitleDescription(title) {
-    let audio;
-    if(title === "INICIAR UM ABAIXO-ASSINADO"){
-      audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    audio.text = title;
+    speechSynthesis.speak(audio);
   }
 
   render() {
