@@ -28,16 +28,10 @@ class MainTitle extends React.Component {
   }
 
   handleTitleDescription() {
-    let audio;
-    if(this.props.content === "BEM-VINDA AO VIOLÊNCIAS INVISÍVEIS"){
-      audio = new Audio('../../../src/components/audioDescriptions/bemVinda.mp3');
-    }else if(this.props.content === "ACOMPANHAMENTO"){
-      audio = new Audio('../../../src/components/audioDescriptions/acompanhamento.mp3');
-    }else if(this.props.content === "TUTORIAL"){
-      audio = new Audio('../../../src/components/audioDescriptions/tutorial.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = this.props.content;
+    msg.lang = 'pt-BR';
+    speechSynthesis.speak(msg);
   }
 
   render() {

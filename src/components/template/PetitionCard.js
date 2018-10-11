@@ -79,6 +79,7 @@ class PetitionCard extends React.Component {
     this.state = { expanded: false };
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.handleStatusDescription = this.handleStatusDescription.bind(this);
+    this.handleAudioDescription = this.handleAudioDescription.bind(this);
   }
 
   handleExpandClick() {
@@ -94,16 +95,23 @@ class PetitionCard extends React.Component {
   };
 
   handleStatusDescription() {
-    let audio;
+    let msg = new SpeechSynthesisUtterance();
+    msg.lang = 'pt-BR';
     if(this.props.status === 1) {
-      audio = new Audio('../../../src/components/audioDescriptions/aprovado.mp3');
+      msg = 'aprovado';
     }else if(this.props.status === 2){ 
-      audio = new Audio('../../../src/components/audioDescriptions/aguardandoAprovacao.mp3');
+      msg = 'Aguardando Aprovação';
     }else if(this.props.status === 3){ 
-      audio = new Audio('../../../src/components/audioDescriptions/reprovado.mp3');
+      msg = 'Reprovado';
     }
-    audio.loop = false;
-    audio.play();
+    speechSynthesis.speak(msg);
+  }
+
+  handleAudioDescription() {
+    let msg = new SpeechSynthesisUtterance();
+    msg.lang = 'pt-BR';
+    msg.text = `Descrição ${this.props.description}  Observações ${this.props.observations}`;
+    speechSynthesis.speak(msg);
   }
 
   render() {
@@ -145,7 +153,7 @@ class PetitionCard extends React.Component {
               <div className={classes.audioIcon}>
                 <IconButton 
                 className={classes.description}
-                onClick={this.handleStatusDescription}
+                onClick={this.handleAudioDescription}
                 aria-label="Audio Descrição"
                 >
                   <VolumeUpIcon className={classes.colorWhite} />

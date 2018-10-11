@@ -19,12 +19,11 @@ class MainButton extends React.Component {
   }
 
   handleButton() {
-    let audio;
-    if(this.props.content === "COMEÇAR"){
-      audio = new Audio('../../../src/components/audioDescriptions/comecar.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = this.props.content;
+    msg.lang = 'pt-BR';
+    speechSynthesis.speak(msg);
+
     this.props.action();
   }
 

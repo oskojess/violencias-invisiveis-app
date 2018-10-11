@@ -65,12 +65,10 @@ class Dashboard extends React.Component {
   }
 
   handleCardTitleDescription(title) {
-    let audio;
-    if(title === "INICIAR UM ABAIXO-ASSINADO"){
-      audio = new Audio('../../../src/components/audioDescriptions/iniciarAbaixoAssinado.mp3');
-    }
-    audio.loop = false;
-    audio.play(); 
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = title;
+    msg.lang = 'pt-BR';
+    speechSynthesis.speak(msg);
   }
 
   render() {

@@ -15,8 +15,7 @@ const styles = () => ({
     padding: "10px"
   },
   dialog: {
-    display: "flex",
-    flexGrow: "1"
+    display: "flex"
   },
   icon: {
     display: "flex",
@@ -54,14 +53,23 @@ class SimpleDialog extends React.Component {
         open: this.props.open || false
       }
       this.handleClose = this.handleClose.bind(this);
+      this.handleAudioDescription = this.handleAudioDescription.bind(this);
     }
 
     handleClose() {
       this.setState({ open: false });
     };
 
+    handleAudioDescription(text) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.lang = 'pt-BR';
+      console.log(text);
+      msg.text = text || this.props.content;
+      speechSynthesis.speak(msg);
+    }
+
     render() {
-      const { classes, title } = this.props;
+      const { classes, title, content } = this.props;
   
       return (
         <Dialog 
@@ -69,12 +77,12 @@ class SimpleDialog extends React.Component {
           open={this.state.open} 
           onClose={this.handleClose}
           className={classes.dialog}
-          aria-labelledby={title} 
+          aria-labelledby={title}
+          fullWidth={true} 
         >
           <MainTitle content={title} icon="error_outline" className={classes.space}></MainTitle>
           <Typography variant="subheading" align="justify" className={classes.space}>
-            LOREM IPSUM DOLOR SIT AMET, CONSECTETUER
-            ADIPISCING ELIT, SED 
+           {content}
           </Typography>
           <DialogActions className={classes.buttons}>
             <div className={classes.confirmButton}>
@@ -86,6 +94,7 @@ class SimpleDialog extends React.Component {
               <IconButton 
               aria-expanded={this.state.expanded}
               aria-label="Audio Descrição"
+              onClick={this.handleAudioDescription}
               >
                 <VolumeUpIcon className={classes.audioIcon} />
               </IconButton>

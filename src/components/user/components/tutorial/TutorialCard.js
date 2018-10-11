@@ -40,6 +40,7 @@ class TutorialCard extends React.Component {
         <SimpleDialog
           title={"TUTORIAL"}
           open={true}
+          content="Exemplo de texto"
         />
       </div>
     );
