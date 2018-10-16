@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { AppContainer, hot } from "react-hot-loader";
+import { Provider } from 'react-redux';
+import { Store } from './src/store/index';
 
 
 
@@ -10,9 +12,9 @@ import UserRoutes from "./src/routes/user/userRoutes";
 document.documentElement.lang = 'pt';
 
 ReactDOM.render(
-  <AppContainer>
+  <Provider store={Store}>
     <UserRoutes />
-  </AppContainer>,
+  </Provider>,
   document.getElementById("root")
 );
 

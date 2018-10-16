@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { connect } from 'react-redux';
+import { userActions } from '../../actions/index';
 
 import { Title, Label, Form, Input, Text } from "./Theme";
 
@@ -38,6 +40,17 @@ const styles = () => ({
 });
 
 class Login extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.submitLogin = this.submitLogin.bind(this);
+  }
+
+  submitLogin(values){
+    console.log(values);
+    this.props.sumitLogin("nathi", "123");
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -47,7 +60,7 @@ class Login extends React.Component {
           initialValues={{ email: "", password: "" }}
   
           onSubmit={values => {
-            console.log(values);
+           this.submitLogin(values) 
           }}
           render={({
             touched,
@@ -100,5 +113,11 @@ class Login extends React.Component {
 Login.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      sumitLogin: (username, password) => dispatch(userActions.login(username, password))
+  };
+};
   
-export default withStyles(styles)(Login);
+export default connect(undefined, mapDispatchToProps)(withStyles(styles)(Login));

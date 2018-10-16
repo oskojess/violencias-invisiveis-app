@@ -11,6 +11,7 @@ import MainButton from "./template/MainButton";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import audio from '../utils/audioConfig';
+import { connect } from 'react-redux';
 
 const styles = () => ({
   space: {

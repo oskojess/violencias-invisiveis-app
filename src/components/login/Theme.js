@@ -25,9 +25,9 @@ export const Input = styled.input`
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
   &:focus {
-    -webkit-animation:${inputHighlighter} 0.3s ease;
-    -moz-animation:${inputHighlighter} 0.3s ease;
-    animation:${inputHighlighter} 0.3s ease;
+    -webkit-animation:${inputHighlighter} 0.3s ease forwards;
+    -moz-animation:${inputHighlighter} 0.3s ease forwards;
+    animation:${inputHighlighter} 0.3s ease forwards;
   }
 `;
 
