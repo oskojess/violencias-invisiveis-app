@@ -7,17 +7,17 @@ import UserDrawer from "./UserDrawer";
 import AppBar from "./AppBar";
 import { withRouter } from "react-router";
 //import AdminDrawer from "./AdminDrawer";
-
+ 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   appFrame: {
     height: "100vh",
     zIndex: 1,
-    overflow: "hidden",
+    overflow: "scroll",
     position: "relative",
     display: "flex",
     width: "100%"
@@ -46,10 +46,16 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
+  cardStyle: {
+    display: "flex",
+    backgroundColor: "#9E002D",
+    padding: 60,
+  },
   hide: {
     display: "none"
   },
   drawerPaper: {
+    backgroundColor: "#EDEDED",
     position: "relative",
     width: drawerWidth
   },
@@ -86,7 +92,11 @@ const styles = theme => ({
   },
   "contentShift-right": {
     marginRight: 0
-  }
+  }, 
+  icon: {
+    fontSize: "20px",
+  },
+
 });
 
 class AppBarCard extends Component {
@@ -119,6 +129,7 @@ class AppBarCard extends Component {
             history={history}
             anchor={anchor}
             open={open}
+         
             handleDrawerOpen={() => this.handleDrawerOpen()}
           />
           <UserDrawer
@@ -127,6 +138,7 @@ class AppBarCard extends Component {
             history={history}
             anchor={anchor}
             open={open}
+     
             handleDrawerClose={() => this.handleDrawerClose()}
           />
           <main
