@@ -85,7 +85,13 @@ class Dashboard extends React.Component {
         </Typography>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-            <Typography variant="subheading" className={classes.cardTitle} onClick={() => {this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO")}}>
+            <Typography
+              variant="subheading"
+              className={classes.cardTitle}
+              onClick={() => {
+                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+              }}
+            >
               <Icon className={classes.icon}>star_border</Icon>
               INICIAR UM ABAIXO-ASSINADO
             </Typography>
@@ -98,14 +104,45 @@ class Dashboard extends React.Component {
         <div className={classes.space} />
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
-          <Typography variant="subheading" className={classes.cardTitle} onClick={() => {this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO")}}>
-              <Icon className={classes.icon}>star_border</Icon>
+            <Typography
+              variant="subheading"
+              className={classes.cardTitle}
+              onClick={() => {
+                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+              }}
+            >
+              <Icon className={classes.icon}>access_time</Icon>
               ACOMPANHAMENTO
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
+          <CardActions className={classes.cardActions}>
+            <MainButton content="VER" action={() => history.push("/new")} />
+          </CardActions>
         </Card>
 
+        <div className={classes.space} />
+        <Card className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography
+              variant="subheading"
+              className={classes.cardTitle}
+              onClick={() => {
+                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+              }}
+            >
+              <Icon className={classes.icon}>error_outline</Icon>
+              TUTORIAL
+            </Typography>
+          </CardContent>
+          <Divider className={classes.cardDivider} />
+          <CardActions className={classes.cardActions}>
+            <MainButton
+              content="TUTORIAL"
+              action={() => history.push("/new")}
+            />
+          </CardActions>
+        </Card>
       </div>
     );
   }
