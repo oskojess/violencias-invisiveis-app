@@ -12,7 +12,7 @@ import Login from "../../components/login/Login";
 class UserRoutes extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter >
         <App>
           <Switch>
             <Route path="/login" component={Login} />

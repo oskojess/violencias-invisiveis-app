@@ -4,10 +4,12 @@ import { reducer as toastrReducer } from "react-redux-toastr";
 
 import dashboard from "./dashboardReducer";
 import { login } from "./loginReducer";
+import { alert } from "./alertReducer";
 
 const rootReducer = combineReducers({
   dashboard,
-  login
+  login,
+  alert
 });
 
 export default rootReducer;
