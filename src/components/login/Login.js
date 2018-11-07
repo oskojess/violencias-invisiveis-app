@@ -1,16 +1,14 @@
 import * as React from "react";
-import { Formik } from "formik";
-import { withRouter } from "react-router";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Fade from '@material-ui/core/Fade';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import { connect } from 'react-redux';
 import { userActions } from '../../actions/login';
 import { alertActions } from '../../actions/alert';
@@ -53,24 +51,34 @@ const styles = theme => ({
 
 class Login extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.submitLogin = this.submitLogin.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       vertical: 'top',
       horizontal: 'center',
     };
   }
 
-  submitLogin(values){
-    console.log(this.props);
+  submitLogin(e) {
+    e.preventDefault();
+    const values = {
+      email: e.target.email.value,
+      password: e.target.senha.value
+    };
     this.props.sumitLogin(values, this.props.history);
   }
 
-  handleClose(){
+  handleClose() {
     this.props.closeAlert();
   };
+
+  handleChange(e) {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   render() {
     const { classes, alert, login } = this.props;
@@ -78,55 +86,27 @@ class Login extends React.Component {
     return (
       <Wrapper className={classes.wrapper}>
         <Typography variant="title">Acesso</Typography>
-        <Formik
-          initialValues={{ email: "", password: "" }}
-  
-          onSubmit={values => {
-           this.submitLogin(values) 
-          }}
-          render={({
-            touched,
-            errors,
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              <Typography variant="body1" className={classes.label}>
-                Email ou telefone *
-                {touched.email &&
-                  errors.email && <Text color="red">{errors.email}</Text>}
-                <Input
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  border={touched.email && errors.email && "1px solid red"}
-                  type="text"
-                  name="Email ou Telefone"
-                  placeholder="Telefone ou email"
-                />
-              </Typography>
-              <Typography variant="body1" className={classes.label}>
-                Senha *
-                {touched.password &&
-                  errors.password && <Text color="red">{errors.password}</Text>}
-                <Input
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  border={
-                    touched.password && errors.password && "1px solid red"
-                  }
-                  type="password"
-                  name="Senha"
-                  placeholder="Senha"
-                />
-              </Typography>
-              <Button className={classes.button} disabled={login.loading} type="submit">Entrar</Button>
-            </Form>
-          )}
-        />
+        <Form onSubmit={this.submitLogin}>
+          <Typography variant="body1" className={classes.label}>
+            Email ou telefone *
+          <Input
+              onChange={this.handleChange}
+              type="text"
+              name="email"
+              placeholder="Telefone ou email"
+            />
+          </Typography>
+          <Typography variant="body1" className={classes.label}>
+            Senha *
+          <Input
+              onChange={this.handleChange}
+              type="password"
+              name="senha"
+              placeholder="Senha"
+            />
+          </Typography>
+          <Button className={classes.button} disabled={login.loading} type="submit">Entrar</Button>
+        </Form>
         <Snackbar
           open={alert.showMessage}
           onClose={this.handleClose}
@@ -161,8 +141,9 @@ class Login extends React.Component {
             <Typography>Carregando!</Typography>}
         </div>
       </Wrapper>
-    );
+    )
   }
+
 }
 
 Login.propTypes = {
@@ -172,16 +153,16 @@ Login.propTypes = {
 function mapStateToProps(state) {
   const { alert, login } = state;
   return {
-      alert,
-      login
+    alert,
+    login
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      sumitLogin: (user, history) => dispatch(userActions.login(user, history)),
-      closeAlert: () => dispatch(alertActions.clear())
+    sumitLogin: (user, history) => dispatch(userActions.login(user, history)),
+    closeAlert: () => dispatch(alertActions.clear())
   };
 };
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login));

@@ -5,7 +5,7 @@ export const userActions = {
   login
 };
 
-function login(user, history) {
+function login(credentials, history) {
   return dispatch => {
       dispatch(loginRequest());
 
@@ -15,8 +15,13 @@ function login(user, history) {
         userId: 1
       })
       .then(function (user) {
-        dispatch(loginSuccess(user));
-        history.push('/dashboard');
+        if(credentials.email === "usuaria" && credentials.password === "123"){
+          dispatch(loginSuccess(user));
+          history.push('/dashboard');
+        }else{
+          dispatch(loginfailed(error));
+          dispatch(alertActions.error('Credenciais inválidas!'));
+        }
       })
       .catch(function (error) {
         dispatch(loginfailed(error));
