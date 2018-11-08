@@ -17,7 +17,7 @@ const styles = theme => ({
   appFrame: {
     height: "100vh",
     zIndex: 1,
-    overflow: "scroll",
+    overflow: "auto",
     position: "relative",
     display: "flex",
     width: "100%"

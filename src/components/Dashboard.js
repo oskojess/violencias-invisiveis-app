@@ -25,7 +25,8 @@ const styles = () => ({
     justifyContent: "center",
     alignItems: "center",
     color: "#fff",
-    cursor: "pointer"
+    cursor: "pointer",
+    textTransform: "uppercase",
   },
   icon: {
     paddingRight: "5px",
@@ -42,7 +43,8 @@ const styles = () => ({
     paddingTop: "16px",
     paddingBottom: "16px",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    textTransform: "uppercase",
   },
   titleDivider: {
     height: "3px",
@@ -53,7 +55,8 @@ const styles = () => ({
     textAlign: "center",
     margin: "0 auto",
     backgroundColor: "#fff"
-  }
+  }, 
+
 });
 
 class Dashboard extends React.Component {
@@ -89,16 +92,16 @@ class Dashboard extends React.Component {
               variant="subheading"
               className={classes.cardTitle}
               onClick={() => {
-                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+                this.handleCardTitleDescription("Iniciar Petição");
               }}
             >
-              <Icon className={classes.icon}>star_border</Icon>
-              INICIAR UM ABAIXO-ASSINADO
+              <Icon className={classes.icon}>description</Icon>
+              Iniciar petição
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
           <CardActions className={classes.cardActions}>
-            <MainButton content="COMEÇAR" action={() => history.push("/new")} />
+            <MainButton content="começar" action={() => history.push("/new")} />
           </CardActions>
         </Card>
         <div className={classes.space} />
@@ -108,16 +111,16 @@ class Dashboard extends React.Component {
               variant="subheading"
               className={classes.cardTitle}
               onClick={() => {
-                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+                this.handleCardTitleDescription("Acompanhamento");
               }}
             >
               <Icon className={classes.icon}>access_time</Icon>
-              ACOMPANHAMENTO
+              Acompanhamento
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
           <CardActions className={classes.cardActions}>
-            <MainButton content="VER" action={() => history.push("/new")} />
+            <MainButton content="ver" action={() => history.push("/follow")} />
           </CardActions>
         </Card>
 
@@ -128,18 +131,18 @@ class Dashboard extends React.Component {
               variant="subheading"
               className={classes.cardTitle}
               onClick={() => {
-                this.handleCardTitleDescription("INICIAR UM ABAIXO-ASSINADO");
+                this.handleCardTitleDescription("Tutorial");
               }}
             >
               <Icon className={classes.icon}>error_outline</Icon>
-              TUTORIAL
+              Tutorial
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />
           <CardActions className={classes.cardActions}>
             <MainButton
-              content="TUTORIAL"
-              action={() => history.push("/new")}
+              content="Assistir"
+              action={() => history.push("/tutorial")}
             />
           </CardActions>
         </Card>
