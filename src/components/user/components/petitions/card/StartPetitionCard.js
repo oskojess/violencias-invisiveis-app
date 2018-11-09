@@ -33,7 +33,12 @@ const styles = {
 const steps = [
   {
     id: '1',
-    message: 'Olá, Jéssica! Vamos dar início a abertura da petição?! Qual será o título de seu baixo-assinado?',
+    message: `
+          Olá, Jéssica! Vamos dar início a abertura da petição?! 
+          Escreva o título do abaixo-assinado 
+          É a primeira coisa que as pessoas vão ver. Por isso capriche! :) 
+          Faça um título curto focado no que você quer que seja diferente.
+    `,
     trigger: '2',
   },
   {
@@ -43,9 +48,37 @@ const steps = [
   },
   {
     id: '3',
-    message: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh diam ?',
-    end: true,
-  }
+    message: `
+          Quem é a pessoa, organização ou empresa que pode resolver o seu problema? 
+          Eles vão receber emails sobre o abaixo-assinado pedindo uma resposta.
+    `,
+    trigger: '4'
+  },
+  {
+    id: '4',
+    user: true,
+    trigger: '5',
+  },
+  {
+    id: '5',
+    message: `
+      Explique o problema que você quer resolver!
+      As pessoas apoiam mais quando você conta uma história pessoal. 
+      Explique como sua ideia vai ser fazer bem pra você, sua família ou comunidade.
+    `,
+    trigger: '6'
+  },
+  {
+    id: '6',
+    user: true,
+    trigger: '7'
+  },
+  {
+    id: '7',
+    message: `
+      Obrigada, abaixo assinado criado com sucesso!
+    `,
+  },
 ];
 
 class StartPetitionCard extends React.Component {
