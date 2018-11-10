@@ -95,6 +95,7 @@ class PetitionCard extends React.Component {
     }else{
       audio.text = 'Mostrar Mais';
     }
+    speechSynthesis.cancel();
     speechSynthesis.speak(audio);
   };
 

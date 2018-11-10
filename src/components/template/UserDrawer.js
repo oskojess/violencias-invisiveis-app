@@ -41,6 +41,7 @@ class UserRoutes extends Component {
 
   handleChangePage(button, title) {
     audio.text = title;
+    speechSynthesis.cancel();
     speechSynthesis.speak(audio);
     this.props.history.push("/" + button);
   }
