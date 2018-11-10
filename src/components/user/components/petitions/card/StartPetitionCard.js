@@ -1,5 +1,6 @@
 import * as React from "react";
 import ChatBot from 'react-simple-chatbot';
+import { ThemeProvider } from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import { withRouter } from "react-router";
 import Toolbar from '@material-ui/core/Toolbar';
@@ -28,6 +29,13 @@ const styles = {
     color: "#fff",
     marginRight: "1em"
   }
+};
+
+const theme = {
+  background: '#fff',
+  fontFamily: 'Roboto',
+  botBubbleColor: 'rgba(0, 0, 0, 0.26)',
+  botFontColor: '#fff'
 };
 
 const steps = [
@@ -95,17 +103,21 @@ class StartPetitionCard extends React.Component {
           <Button color="inherit" onClick={() => history.push("/dashboard")}>CANCELAR</Button>
           </Toolbar>
         </AppBar>
-        <ChatBot
-        headerTitle="Speech Recognition"
-        recognitionEnable={true}
-        recognitionLang="pt"
-        hideUserAvatar="true" 
-        width="100%"  
-        hideHeader="true" 
-        hideBotAvatar="true"
-        placeholder="Digite sua mensagem aqui..."
-        steps={steps}
-        />
+        <ThemeProvider theme={theme}>
+          <ChatBot
+          headerTitle="Speech Recognition"
+          speechSynthesis={{ enable: true, lang: 'pt' }}
+          style={{ "rsc-container": { borderRadius: "0px 10px 0px 10px"} }}
+          recognitionEnable={true}
+          recognitionLang="pt"
+          hideUserAvatar="true" 
+          width="100%"  
+          hideHeader="true" 
+          hideBotAvatar="true"
+          placeholder="Digite sua mensagem aqui..."
+          steps={steps}
+          />
+        </ThemeProvider>
       </div>
     );
   }
