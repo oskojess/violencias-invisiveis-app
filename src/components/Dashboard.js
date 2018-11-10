@@ -82,9 +82,7 @@ class Dashboard extends React.Component {
         <Divider className={classes.titleDivider} />
         <div className={classes.space} />
         <Typography align="justify" className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat.
+         
         </Typography>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
@@ -111,11 +109,11 @@ class Dashboard extends React.Component {
               variant="subheading"
               className={classes.cardTitle}
               onClick={() => {
-                this.handleCardTitleDescription("Acompanhamento");
+                this.handleCardTitleDescription("Acompanhar a situação da sua petição");
               }}
             >
               <Icon className={classes.icon}>access_time</Icon>
-              Acompanhamento
+              Acompanhar Petição
             </Typography>
           </CardContent>
           <Divider className={classes.cardDivider} />

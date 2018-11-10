@@ -101,11 +101,11 @@ class PetitionCard extends React.Component {
 
   handleStatusDescription() {
     if(this.props.status === 1) {
-      audio.text = 'Status Aprovado';
+      audio.text = 'Situação do protocolo está em Aprovado';
     }else if(this.props.status === 3){ 
-      audio.text = 'Status Reprovado';
+      audio.text = 'Situação do protocolo está em Reprovado';
     }else{
-      audio.text = 'Status Aguardando Aprovação';
+      audio.text = 'Situação do protocolo está em Aguardando Aprovação';
     }
     speechSynthesis.speak(audio);
   }

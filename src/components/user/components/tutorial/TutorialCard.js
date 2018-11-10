@@ -36,11 +36,11 @@ class TutorialCard extends React.Component {
         <MainTitle content="TUTORIAL" icon="error_outline"></MainTitle>
         <Divider className={classes.titleDivider} aria-hidden="true" />
         <div className={classes.space} aria-hidden="true"></div>
-        <iframe aria-label="Video Tutorial" width="100%" height="315" src="https://www.youtube.com/embed/FnGfgb_YNE8" frameBorder="0" allowFullScreen></iframe>
+        <iframe aria-label="Video Tutorial" width="100%" height="315" src="https://www.youtube.com/embed/39CprM640f8" frameBorder="0" allowFullScreen></iframe>
         <SimpleDialog
           title={"TUTORIAL"}
           open={true}
-          content="Exemplo de texto"
+          content="No Tutorial você aprenderá a fazer uma petição e como manusear o aplicativo."
         />
       </div>
     );

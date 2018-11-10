@@ -32,9 +32,9 @@ class FollowPetitionCard extends React.Component {
           status={1}
           protocol={"COD918375"}
           description={
-            "Descrição de teste"
+            "Após você finalizar sua petição, você poderá acompanhá-la por aqui! Nesse campo estará um resumo do que você escreveu."
           }
-          observations={"Observação de teste"}
+          observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
         />
         <div>
           <Divider className={classes.titleDivider} aria-hidden="true" />
@@ -43,24 +43,20 @@ class FollowPetitionCard extends React.Component {
             status={0}
             protocol={"COD918375"}
             description={
-              "Descrição de teste"
+              "Após você finalizar sua petição, você poderá acompanhá-la por aqui! Nesse campo estará um resumo do que você escreveu."
             }
-            observations={
-              "Observação de teste"
-            }
+            observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
           />
           <div>
             <Divider className={classes.titleDivider} aria-hidden="true" />
             <div className={classes.space} aria-hidden="true" />
             <PetitionCard
               status={1}
-              protocol={"COD918375"}
+              protocol={"COD918375"}          
               description={
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam eratvoluutpat."
+                "Após você finalizar sua petição, você poderá acompanhá-la por aqui! Nesse campo estará um resumo do que você escreveu."
               }
-              observations={
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing."
-              }
+              observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
             />
             <div>
               <Divider className={classes.titleDivider} aria-hidden="true" />
