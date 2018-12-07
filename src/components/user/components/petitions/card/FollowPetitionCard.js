@@ -9,7 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = () => ({
   titleDivider: {
     height: "3px",
-    backgroundColor: "#1ea896"
+    backgroundColor: "#ED2D23"
   },
   space: {
     height: "25px"
@@ -37,7 +37,6 @@ class FollowPetitionCard extends React.Component {
           observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
         />
         <div>
-          <Divider className={classes.titleDivider} aria-hidden="true" />
           <div className={classes.space} aria-hidden="true" />
           <PetitionCard
             status={0}
@@ -48,7 +47,6 @@ class FollowPetitionCard extends React.Component {
             observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
           />
           <div>
-            <Divider className={classes.titleDivider} aria-hidden="true" />
             <div className={classes.space} aria-hidden="true" />
             <PetitionCard
               status={1}
@@ -59,7 +57,6 @@ class FollowPetitionCard extends React.Component {
               observations={"Aqui nas obervações serão os administradores que vão escrever para você, caso necessário."}
             />
             <div>
-              <Divider className={classes.titleDivider} aria-hidden="true" />
               <div className={classes.space} aria-hidden="true" />
               <PetitionCard
                 status={1}

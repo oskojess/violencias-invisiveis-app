@@ -14,7 +14,7 @@ const styles = () => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    color: "#1ea896"
+    color: "#ED2D23"
   },
   icon: {
     paddingRight: "5px",

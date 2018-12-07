@@ -21,7 +21,7 @@ const styles = theme => ({
     cursor: "pointer"
   },
   card: {
-    backgroundColor: "#1ea896"
+    backgroundColor: "#737273"
   },
   cardTitle: {
     display: "flex",
