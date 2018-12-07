@@ -67,6 +67,9 @@ const styles = () => ({
   styleFont: {
     fontFamily: "Helvetica Neue,Helvetica,Arial,Tahoma,sans-serif"
   },
+  fontStyle: {
+    textAlign: "center"
+  },
   styleText:{
     color: "#CDCDC1",
   }

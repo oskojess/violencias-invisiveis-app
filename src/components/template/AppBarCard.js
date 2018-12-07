@@ -15,7 +15,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   appFrame: {
-    height: "100vh",
+    minHeight: "100vh",
     zIndex: 1,
     overflow: "auto",
     position: "relative",
@@ -58,7 +58,8 @@ const styles = theme => ({
   drawerPaper: {
     backgroundColor: "#EDEDED",
     position: "relative",
-    width: drawerWidth
+    width: drawerWidth,
+    minHeight: "150vh"
   },
   drawerHeader: {
     display: "flex",
