@@ -16,7 +16,6 @@ import IconProfile from "./IconProfile";
 
 const styles = () => ({
   dividerStyle:{
-    width: "80%",
     textAlign: "center",
     margin: "0 auto",
     backgroundColor: "#CDCDC1",
@@ -30,7 +29,13 @@ const styles = () => ({
     fontColor: "#5B5B5F",
     textTransform: "uppercase",
   },
-  
+  menu:{
+    display: "flex",
+    justifyContent: "center",
+    height: "64px",
+    alignItems: "center",
+    padding: "0px"
+  }
 });
 
 class UserRoutes extends Component {
@@ -58,9 +63,7 @@ class UserRoutes extends Component {
           paper: classes.drawerPaper
         }}
       >
-        <div className={classes.cardStyle}>
-          <IconProfile />
-      
+        <div className={classes.menu}>
           <IconButton onClick={() => this.props.handleDrawerClose()}>
             {theme.direction === "rtl" ? (
               <Icon className={classes.icon}> close </Icon>
