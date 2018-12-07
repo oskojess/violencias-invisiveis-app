@@ -23,7 +23,7 @@ const styles = {
     marginRight: 20,
   },
   title: {
-    background: "#1ea896"
+    background: "#ED2D23"
   },
   icon: {
     color: "#fff",
@@ -34,7 +34,7 @@ const styles = {
 const theme = {
   background: '#fff',
   fontFamily: 'Roboto',
-  botBubbleColor: 'rgba(0, 0, 0, 0.26)',
+  botBubbleColor: '#737273',
   botFontColor: '#fff'
 };
 
@@ -42,23 +42,25 @@ const steps = [
   {
     id: '1',
     message: `
-          Olá, Jéssica! Vamos dar início a abertura da petição?! 
-          Escreva o título do abaixo-assinado 
-          É a primeira coisa que as pessoas vão ver. Por isso capriche! :) 
-          Faça um título curto focado no que você quer que seja diferente.
+      Olá, Jéssica! Vou te ajudar a fazer sua petição.
     `,
     trigger: '2',
   },
   {
     id: '2',
-    user: true,
+    message: `
+      O título do abaixo-assinado é a primeira coisa que as pessoas vão ver. 
+      Precisa ser curto, focado e direto ao ponto. 
+      Vou te dar um exemplo de petições reais: “Quero psicólogos nas Delegacias da Mulher do Estado de São Paulo”. 
+      Ou outro exemplo: “Quero iluminação nos escadões da Vila Albertina”
+    `,
     trigger: '3',
   },
   {
     id: '3',
     message: `
-          Quem é a pessoa, organização ou empresa que pode resolver o seu problema? 
-          Eles vão receber emails sobre o abaixo-assinado pedindo uma resposta.
+      Entendeu? Agora pense um pouquinho e diga em poucas palavras: O que você quer mudar? 
+      O que você gostaria que fosse diferente?
     `,
     trigger: '4'
   },
@@ -70,26 +72,93 @@ const steps = [
   {
     id: '5',
     message: `
-      Explique o problema que você quer resolver!
-      As pessoas apoiam mais quando você conta uma história pessoal. 
-      Explique como sua ideia vai ser fazer bem pra você, sua família ou comunidade.
-    `,
-    trigger: '6'
+      Agora precisamos pensar quem é que pode resolver esse problema. 
+      É a prefeitura? É o dono de uma empresa? É o diretor de uma escola? Nem tudo passa pelos poderosos. 
+      Às vezes as decisões estão mais perto do que parecem.`,
+    trigger: '6',
   },
   {
     id: '6',
-    user: true,
+    message: `
+      Pense mais um pouquinho e me responda: quem é a pessoa, organização ou empresa que pode resolver o seu problema?
+    `,
     trigger: '7'
   },
   {
     id: '7',
-    message: `
-      Obrigada, abaixo assinado criado com sucesso!
-    `,
+    user: true,
+    trigger: '8',
   },
+  {
+    id: '8',
+    message: `
+      Boa! Logo mais o {previousValue} vai começar a receber pressão. 
+      Cada pessoa que assinar sua petição vai enviar um email automático para ele. Imagina!
+    `,
+    trigger: '9'
+  },
+  {
+    id: '9',
+    message: `
+      Bom, agora é hora de explicar um pouquinho melhor como sua ideia vai fazer bem pra você e pra sua comunidade. 
+      Explica rapidinho pra mim quem é você e porque esse problema é urgente.
+    `,
+    trigger: '10'
+  },
+  {
+    id: '10',
+    user: true,
+    trigger: '11'
+  },
+  {
+    id: '11',
+    message: `
+      Incrível! Sua petição está pronta no link xxxxx. 
+      Agora é chamar seus amigos para assinar. 
+      Clique abaixo para compartilhar no Whatsapp ou no Facebook.
+    `,
+    trigger: '12'
+  },
+  {
+    id: '12',
+    component: (
+      <a 
+        style={{display: "flex", alignItems: "center", width: "100%", textDecoration: "none", justifyContent: "center", color: "#25d366"}} 
+        href="https://wa.me/whatsappphonenumber/?text=https://www.change.org/">
+        <img style={{width: "30px", height: "30px", paddingRight: "1em"}} src="/src/images/whatsappLogo.png"></img>
+        Compartilhar no Whatsapp
+      </a>
+    ),
+    trigger: '13'
+  },
+  {
+    id: '13',
+    component: (
+      <a 
+        style={{display: "flex", alignItems: "center", width: "100%", textDecoration: "none", justifyContent: "center", color: "#3b5998"}} 
+        href="https://www.facebook.com/sharer/sharer.php?u=https://www.change.org/" target="_blank">
+        <img style={{width: "30px", height: "30px", paddingRight: "1em"}} src="/src/images/facebookLogo.png"></img>
+        Compartilhar no Facebook
+      </a>
+    ),
+    end: true
+  }
 ];
 
 class StartPetitionCard extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      cancelOption: true
+    };
+    this.handleEnd = this.handleEnd.bind(this);
+  }
+
+  handleEnd() {
+    this.setState({cancelOption: false});
+  }
+
   render(){
     const { classes, history } = this.props;
     return(
@@ -100,13 +169,18 @@ class StartPetitionCard extends React.Component {
             <Icon className={classes.icon}>stars</Icon> 
             NOVO ABAIXO-ASSINADO
           </Typography>
-          <Button color="inherit" onClick={() => history.push("/dashboard")}>CANCELAR</Button>
+          {
+            this.state.cancelOption === true
+            &&
+            <Button color="inherit" onClick={() => history.push("/dashboard")}>CANCELAR</Button>
+          }
           </Toolbar>
         </AppBar>
         <ThemeProvider theme={theme}>
           <ChatBot
           headerTitle="Speech Recognition"
-          speechSynthesis={{ enable: true, lang: 'pt' }}
+          handleEnd={this.handleEnd}  
+          speechSynthesis={{ enable: true, lang: 'pt-BR' }}
           style={{ "rsc-container": { borderRadius: "0px 10px 0px 10px"} }}
           recognitionEnable={true}
           recognitionLang="pt"
