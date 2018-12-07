@@ -137,6 +137,7 @@ class Dashboard extends React.Component {
         <Divider className={classes.cardDivider} />
         <ListItem
           button
+          
           onClick={() =>
             this.handleChangePage("follow", "Acompanhar o seu abaixo-assinado")}
       style={{  justifyContent: "center"}}
@@ -147,21 +148,27 @@ class Dashboard extends React.Component {
         </ListItem>
 
         <Divider className={classes.cardDivider} />
+        <div  style={{  justifyContent: "center"}}>
         <ListItem
           button
           onClick={() => this.handleChangePage("tutorial", "Assistir tutorial")}
-          style={{  textAlign: "center"}}
+         
           aria-label="Assistir Tutorial"
         >
-          <Icon className={classes.iconMenu}>play_circle_outline</Icon>
+          <Icon className={classes.iconMenu} >play_circle_outline</Icon>
           <ListItemText
             className={classes.fontStyle}
             primary="Assistir Tutorial"
           />
         </ListItem>
-
+        </div>
  <Divider className={classes.cardDivider} />
-        <p className={classes.styleText}>Este app é uma parceria Change.org Brasil e Minas Programam (Saiba mais)</p>
+        <p className={classes.styleText}>Este app é uma parceria Change.org Brasil e Minas Programam <a 
+        style={{textDecoration: "none", color:"#CDCDC1"}} 
+        onClick={() => this.handleChangePage("creditos", "Saiba mais")}
+        >
+      
+      <u>(Saiba mais)</u></a></p>
 </div>
     );
   }

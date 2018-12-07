@@ -48,7 +48,7 @@ class TutorialCard extends React.Component {
         </div>
         <div className={classes.space} />
         <div>
-          <iframe src="http://www.comousarachange.org/" style={{border:"none"}}  width="100%" />
+          <iframe src="http://www.comousarachange.org/" style={{border:"none"}}  />
         </div>
       </div>
     );

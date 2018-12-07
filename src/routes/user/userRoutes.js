@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import App from "../../../App";
 
 import Dashboard from "../../components/Dashboard";
+import CreditosCard from "../../components/CreditosCard";
 import Tutorial from "../../components/user/components/tutorial/TutorialCard";
 import StartPetition from "../../components/user/components/petitions/card/StartPetitionCard";
 import FollowPetitionCard from "../../components/user/components/petitions/card/FollowPetitionCard";
@@ -20,7 +21,7 @@ class UserRoutes extends React.Component {
             <Route path="/new" component={StartPetition} />
             <Route path="/follow" component={FollowPetitionCard} />
             <Route path="/tutorial" component={Tutorial} />
-            <Route path="/profile" component={Dashboard} />
+            <Route path="/creditos" component={CreditosCard} />
             <Redirect from="*" to="/dashboard" />
           </Switch>
         </App>
