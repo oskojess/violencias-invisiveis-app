@@ -6,10 +6,11 @@ import audio from '../../utils/audioConfig';
 
 const styles = () => ({
   button: {
-    borderRadius: "20px",
-    padding: "8px 35px",
+    borderRadius: "5px",
+    padding: "15px 35px",
     color: "#fff",
-    borderColor: "#fff"
+    borderColor: "#ec2c22",
+    backgroundColor: "#ec2c22"
   }
 });
 

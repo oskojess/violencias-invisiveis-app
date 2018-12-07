@@ -82,32 +82,32 @@ class UserRoutes extends Component {
         <ListItem
           button
           onClick={() =>
-            this.handleChangePage("new", "Iniciar petição")
+            this.handleChangePage("new", "Iniciar abaixo-assinado")
           }
           aria-label="Iniciar baixo-assinado"
         >
         <Icon className={classes.iconMenu}>description</Icon>
       
-          <ListItemText className={classes.fontStyle} primary="Iniciar" />
+          <ListItemText className={classes.fontStyle} primary="Fazer abaixo-assinado" />
         </ListItem>
         <Divider className={classes.dividerStyle} />
         <ListItem
           button
           onClick={() =>
-            this.handleChangePage("follow", "Acompanhar sua Petição")
+            this.handleChangePage("follow", "Acompanhar o seu abaixo-assinado")
           }
-          aria-label="Acompanhar Petição"
+          aria-label="Acompanhar abaixo-assinado"
         >
-          <Icon className={classes.iconMenu}>access_time</Icon>
+          <Icon className={classes.iconMenu}>schedule</Icon>
           <ListItemText className={classes.fontStyle} primary="Acompanhar" />
         </ListItem>
         <Divider className={classes.dividerStyle} />
         <ListItem
           button
-          onClick={() => this.handleChangePage("tutorial", "Tutorial")}
+          onClick={() => this.handleChangePage("tutorial", "Tutorial.  Aqui você vai aprender como fazer uma petição de sucesso. Assista ao vídeo ou siga os passos abaixo")}
           aria-label="Tutorial"
         >
-          <Icon className={classes.iconMenu}>error_outline</Icon>
+          <Icon className={classes.iconMenu}>play_arrow</Icon>
           <ListItemText  className={classes.fontStyle} primary="Tutorial" />
         </ListItem>
         <Divider className={classes.dividerStyle} />

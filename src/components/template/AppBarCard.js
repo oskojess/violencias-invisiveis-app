@@ -44,7 +44,8 @@ const styles = theme => ({
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 20
+    marginRight: 20,
+    color: "#696969 !important",
   },
   cardStyle: {
     display: "flex",

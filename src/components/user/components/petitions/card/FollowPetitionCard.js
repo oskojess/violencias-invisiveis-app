@@ -25,8 +25,8 @@ class FollowPetitionCard extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <MainTitle content="ACOMPANHAMENTO" icon="access_time" />
-        <Divider className={classes.titleDivider} aria-hidden="true" />
+        <MainTitle content="ACOMPANHAMENTO" icon="schedule" />
+    
         <div className={classes.space} aria-hidden="true" />
         <PetitionCard
           status={1}

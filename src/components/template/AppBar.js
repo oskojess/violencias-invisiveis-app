@@ -6,6 +6,15 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { withRouter } from "react-router";
+import styled from "styled-components";
+
+const MainTitle = styled.div`
+color: #ec2c22 !important; 
+font-weight: bold;
+text-align: center;
+justify-content: center;
+
+`;
 
 class AppBar extends Component {
   render() {
@@ -14,7 +23,7 @@ class AppBar extends Component {
     return (
 
       <AppBarComponent
-        style={{ backgroundColor: '#9E002D' }}
+        style={{ backgroundColor: '#fff' }}
         className={classNames(classes.appBar, {
           [classes.appBarShift]: open,
           [classes[`appBarShift-${anchor}`]]: open
@@ -29,8 +38,8 @@ class AppBar extends Component {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" noWrap>
-            Violências Invisíveis
+          <Typography variant="title" color="#ec2c22" noWrap>
+          <MainTitle>change.org</MainTitle>
           </Typography>
         </Toolbar>
       </AppBarComponent>
